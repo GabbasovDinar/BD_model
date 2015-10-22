@@ -1,6 +1,6 @@
-from django.db import models
+п»їfrom django.db import models
 
-#Задача 1
+#Р—Р°РґР°С‡Р° 1
 
 class Car(models.Model):
     BrandCar = models.CharField()
@@ -24,22 +24,22 @@ class InfoShipping(models.Model):
     DataShipping = models.DateField('Data shipping')
     
     
-#Задача 2
+#Р—Р°РґР°С‡Р° 2
 
-class InfoFlightSchedule(models.Model): #расписание рейсов
-    FlightNumber = models.IntegerField() #номер рейса
-    TypeAircraft = models.CharField() #тип самолета
+class InfoFlightSchedule(models.Model): #СЂР°СЃРїРёСЃР°РЅРёРµ СЂРµР№СЃРѕРІ
+    FlightNumber = models.IntegerField() #РЅРѕРјРµСЂ СЂРµР№СЃР°
+    TypeAircraft = models.CharField() #С‚РёРї СЃР°РјРѕР»РµС‚Р°
     StartPunct = models.CharField()
     EndPunkt = models.CharField()
-    DepartureDate = models.DateTimeField() #время и дата вылета
-    FlightTime = models.FloatField() #время полета
-    Price = models.FloatField() #цена билета
+    DepartureDate = models.DateTimeField() #РІСЂРµРјСЏ Рё РґР°С‚Р° РІС‹Р»РµС‚Р°
+    FlightTime = models.FloatField() #РІСЂРµРјСЏ РїРѕР»РµС‚Р°
+    Price = models.FloatField() #С†РµРЅР° Р±РёР»РµС‚Р°
     
 class InfoFreePlaces(models.Model):
     FlightScheduleID = models.ForeignKey('InfoFlightSchedule')
     PassengerID = models.OneToOneField('InfoPassenger')
-    AllPlaces = models.IntegerField() #общее количество мест
-    FreePlaces = models.IntegerField() #количество свободных мест
+    AllPlaces = models.IntegerField() #РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚
+    FreePlaces = models.IntegerField() #РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРѕР±РѕРґРЅС‹С… РјРµСЃС‚
     
 class InfoPassenger(models.Model):
     NumberPassport = models.IntegerField()
@@ -50,10 +50,10 @@ class InfoPassenger(models.Model):
     
 class Archive(models.Model):
     FreePlacesID = models.ForeignKey('InfoFreePlaces')
-    SoldPlaces = models.IntegerField()#проданные места
+    SoldPlaces = models.IntegerField()#РїСЂРѕРґР°РЅРЅС‹Рµ РјРµСЃС‚Р°
     
     
-#ЗАДАЧА 3
+#Р—РђР”РђР§Рђ 3
 
 class Workers(models.Model):
     Name = models.CharField()
@@ -78,7 +78,7 @@ class Organization(models.Model):
     NameOrganization = models.CharField()
     
     
-#ЗАДАЧА 4
+#Р—РђР”РђР§Рђ 4
 class Firma(models.Model):
     NameOrganization = models.CharField()
 
@@ -89,7 +89,7 @@ class Goods(models.Model):
     GuaranteePeriod = models.IntegerField()
     UnitMeasure = models.CharField()
 
-class FirmaGoods(models.Model): #товары организации
+class FirmaGoods(models.Model): #С‚РѕРІР°СЂС‹ РѕСЂРіР°РЅРёР·Р°С†РёРё
     GoodsID = models.ForeignKey('Goods')
     FirmaID = models.ForeignKey('Firma')
     NumberGoods = models.IntegerField()
@@ -98,23 +98,23 @@ class FirmaGoods(models.Model): #товары организации
 class Party(models.Model):
     FirmaGoodsID = models.ForeignKey('FirmaGoods')
     NumberParty = models.IntegerField()
-    TheSupplier = models.BooleanField() #с предоплатой или нет
+    TheSupplier = models.BooleanField() #СЃ РїСЂРµРґРѕРїР»Р°С‚РѕР№ РёР»Рё РЅРµС‚
 
     
 
     
-# ЗАДАЧА 5
+# Р—РђР”РђР§Рђ 5
 
 
 class Customer(models.Model):
-    NameOrganization = models.CharField() #Имя 
-    Price = models.FloatField() #Цена заказа
-    Date = models.DateField() #Срок выполнения заказа
+    NameOrganization = models.CharField() #РРјСЏ 
+    Price = models.FloatField() #Р¦РµРЅР° Р·Р°РєР°Р·Р°
+    Date = models.DateField() #РЎСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РєР°Р·Р°
     
-class Equipment(models.Model): #оборудование
+class Equipment(models.Model): #РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµ
     NameEquipment = models.CharField()
     
-class Bid(models.Model): #заявка
+class Bid(models.Model): #Р·Р°СЏРІРєР°
     CustomerID = models.ForeignKey('Customer')
     EquipmentID = models.ForeignKey('Equipment')
     NumberEquipment = models.IntegerField()
