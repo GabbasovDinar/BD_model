@@ -19,10 +19,15 @@ class ProjectUser(models.Model):
     Position = models.CharField(max_length=100)
     
 class Tasks(models.Model):
-    DateWork = models.DateTimeField('date work')
-    TimeWork = models.FloatField(max_length=100)
-    Description = models.CharField(max_length=500)
+    Description = models.CharField(max_length=500) 
     ProjectID = models.ForeignKey('Project')
     ProgrammerID = models.ForeignKey('ProjectUser')
     def __str__(self): 
         return self.Description  
+    
+class WorkLogo(models.Model):
+    DescriptionLogo = models.CharField(max_length=500)
+    DateLogo = models.DateTimeField('date work')
+    TimeWork = models.FloatField(max_length=100)
+    TasksID = models.ForeignKey('Tasks')
+    
