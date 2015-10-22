@@ -25,9 +25,9 @@ class Tasks(models.Model):
     def __str__(self): 
         return self.Description  
     
-class WorkLogo(models.Model):
-    DescriptionLogo = models.CharField(max_length=500)
-    DateLogo = models.DateTimeField('date work')
+class WorkLogs(models.Model):
+    DescriptionLog = models.CharField(max_length=500)
+    DateLog = models.DateTimeField('date work')
     TimeWork = models.FloatField(max_length=100)
     TasksID = models.ForeignKey('Tasks')
     
