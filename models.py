@@ -6,7 +6,7 @@ class User(models.Model):
     Email = models.EmailField()
     Position = models.CharField(max_length=100)
     def __str__(self): 
-            return self.Name
+        return self.Name
         
 class Project(models.Model):
     NameProject = models.CharField(max_length=100)
