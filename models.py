@@ -15,7 +15,7 @@ class Project(models.Model):
     
 class ProjectUser(models.Model):
     UserID = models.ForeignKey('User')
-    ProsectID = models.ForeignKey('Project')
+    ProjectID = models.ForeignKey('Project')
     Position = models.CharField(max_length=100)
     
 class Tasks(models.Model):
